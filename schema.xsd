@@ -1,0 +1,11 @@
+<element name="presentation" >
+    <complexType name="presType">
+        <sequence>
+            <element name="FName"
+                         type="string" />
+            <element name="LName"
+                         type="string" />
+        </sequence>
+        <attribute name="ConID" type="integer" />
+    </complexType>
+</element>
