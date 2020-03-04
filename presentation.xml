@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE presentation SYSTEM "schema-presentation.dtd">
-
 <root>
   <en-tête>
     <modele couleur="#FF0066" taille="18"></modele>
@@ -40,4 +38,3 @@
     </corps>
   </diapositive>
 </root>
-

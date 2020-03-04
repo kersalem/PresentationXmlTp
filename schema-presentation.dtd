@@ -8,3 +8,4 @@
 <!ELEMENT corps (blocs)>
 <!ELEMENT blocs (p,list)>
 <!ELEMENT list (p)>
+<!ELEMENT item EMPTY>
