@@ -1,3 +1,4 @@
+<?xml-stylesheet type="text/xsl" href="partie1.xsl"?>
 <countries>
     <country name="Afghanistan" population="22664136" area="647500">
         <language percentage="11">Turkic</language>

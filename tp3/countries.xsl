@@ -6,7 +6,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             <head><title>pays</title></head>
             <body>
 
-                <xsl:apply-templates/>
+                <xsl:apply-templates
+                        select="country[city]"/>
+
+
+               <!-- <xsl:apply-templates
+                        select="country[city/population> 1000000]"/>-->
+
+               <!-- <xsl:apply-templates
+                select="country[@population> 1000000000][starts-with(@name, 'B')]/city"/>-->
 
             </body>
         </html>
@@ -14,7 +22,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <xsl:template match="country">
         <h2>
-           + J'ai rencontré un pays : <xsl:value-of select="@name"/>
+           + <xsl:value-of select="@name"/>
         </h2>
         <ul>
             <li> Population : <xsl:value-of select="@name"/>
@@ -48,6 +56,19 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
         <p>ville : <xsl:value-of select="@name"/>
             (<xsl:value-of select="population" /> hab.)
         </p>
+    </xsl:template>
+
+
+
+<!-- Selectionner ensemble elements -->
+    <xsl:template match="country">
+        <h2>
+            <xsl:value-of select="@name"/>
+        </h2>
+        <ul>
+            <li>Population : <xsl:value-of select="@population" /></li>
+            <li>Superficie : <xsl:value-of select="@area" /></li>
+        </ul>
     </xsl:template>
 
 </xsl:stylesheet>
