@@ -32,6 +32,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                         </td>
                     </tr>
                 </table>
+                <br />
+                <xsl:apply-templates select="city"/>
             </div>
             <br />
         </div>
@@ -43,7 +45,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         <br />
     </xsl:template>-->
 
+    <xsl:template match="city">
+        <p>ville : <xsl:value-of select="name"/></p>
+        <p>+ <xsl:value-of select="population" /> hab.</p>
+        <p>+ <xsl:apply-templates/><xsl:value-of select="@percentage" />%</p>
+    </xsl:template>
+
 </xsl:stylesheet>
+
+
 
 <!--
 <xsl:apply-templates
