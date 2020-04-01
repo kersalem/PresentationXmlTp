@@ -15,10 +15,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                     <a class="btn btn-secondary dropdown-toggle" href="#country" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Nom
                     </a>
-                    <a class="btn btn-secondary dropdown-toggle" href="#population" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn btn-secondary dropdown-toggle" href="#population" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Popu
                     </a>
-                    <a class="btn btn-secondary dropdown-toggle" href="#area" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn btn-secondary dropdown-toggle" href="#area" role="button" id="dropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Area
                     </a>
 
@@ -28,12 +28,18 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                                     <xsl:sort select="@country" order="descending"/>
                                 </xsl:apply-templates>
                             </a>
-                        <a class="dropdown-item" href="#population">
-                            <xsl:apply-templates select="country" mode="pop" id="population">
-                                <xsl:sort select="@population" data-type="number"
-                                          order="descending"/>
-                            </xsl:apply-templates>
-                        </a>
+                    </div>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
+                    <a class="dropdown-item" href="#population">
+                        <xsl:apply-templates select="country" mode="pop" id="population">
+                            <xsl:sort select="@population" data-type="number"
+                                      order="descending"/>
+                        </xsl:apply-templates>
+                    </a>
+                </div>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
                         <a class="dropdown-item" href="#area">
                             <xsl:apply-templates select="country" mode="area" id="area">
                                 <xsl:sort select="@area" data-type="number"
@@ -41,6 +47,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                             </xsl:apply-templates>
                         </a>
                     </div>
+
                 </div>
 
 <!--                <div id="navigation">
