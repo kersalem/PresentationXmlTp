@@ -13,13 +13,21 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
             <body>
                 <div>
                     <a href="#country">Nom</a>
+                    <a href="#population">Population</a>
                 </div>
 
                 <div id="navigation">
                     <div id="country">
                         <p>Pays</p>
-                        <xsl:apply-templates mode="country">
+                        <xsl:apply-templates mode="nav">
                             <xsl:sort select="@country"/>
+                        </xsl:apply-templates>
+                    </div>
+                    <div id="country">
+                        <p>Population</p>
+                        <xsl:apply-templates select="country" mode="pop">
+                            <xsl:sort select="@population" data-type="number"
+                                      order="descending"/>
                         </xsl:apply-templates>
                     </div>
                 </div>
@@ -49,14 +57,25 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         <br />
     </xsl:template>-->
 
-    <xsl:template match="country" mode="country">
+    <xsl:template match="country" mode="nav">
+        <xsl:if test="position() &lt;= 10">
+            <li>
+               <a href="#{@name}">
+                   <xsl:value-of select="@name"/>
+               </a>
+            </li>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="country" mode="pop">
+        <xsl:if test="position() &lt;= 10">
         <li>
-            <p>
-                <a href="#{@name}">
-                    <xsl:value-of select="@name"/>
-                </a>
-            </p>
+            <a href="#{@name}">
+                <b><xsl:value-of select="@name"/></b> :
+                <xsl:value-of select="@population"/>
+            </a>
         </li>
+        </xsl:if>
     </xsl:template>
 
 
