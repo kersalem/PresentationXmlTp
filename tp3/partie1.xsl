@@ -155,6 +155,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         <li>
             <xsl:value-of select="name" />:
             <xsl:value-of select="population"/> personnes
+            <br />
+           <p style="font-size: 10px;">
+               soit environ <b>
+               <xsl:value-of select="round((population div ancestor::country/@population)* 100)"/> % </b>de la population totale du pays
+           </p>
         </li>
     </xsl:template>
 
