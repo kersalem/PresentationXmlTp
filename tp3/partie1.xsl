@@ -14,19 +14,27 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 <div>
                     <a href="#country">Nom</a>
                     <a href="#population">Population</a>
+                    <a href="#area">Superficie</a>
                 </div>
 
                 <div id="navigation">
                     <div id="country">
                         <p>Pays</p>
                         <xsl:apply-templates mode="nav">
-                            <xsl:sort select="@country"/>
+                            <xsl:sort select="@country" order="descending"/>
                         </xsl:apply-templates>
                     </div>
                     <div id="country">
                         <p>Population</p>
                         <xsl:apply-templates select="country" mode="pop">
                             <xsl:sort select="@population" data-type="number"
+                                      order="descending"/>
+                        </xsl:apply-templates>
+                    </div>
+                    <div id="country">
+                        <p>Area</p>
+                        <xsl:apply-templates select="country" mode="area">
+                            <xsl:sort select="@area" data-type="number"
                                       order="descending"/>
                         </xsl:apply-templates>
                     </div>
@@ -75,6 +83,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 <xsl:value-of select="@population"/>
             </a>
         </li>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="country" mode="area">
+        <xsl:if test="position() &lt;= 10">
+            <li>
+                <a href="#{@name}">
+                    <b><xsl:value-of select="@name"/></b> :
+                    <xsl:value-of select="@area"/>
+                </a>
+            </li>
         </xsl:if>
     </xsl:template>
 
