@@ -11,6 +11,20 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                       crossorigin="anonymous"/>
             </head>
             <body>
+                <div>
+                    <a href="#country">Nom</a>
+                </div>
+
+                <div id="navigation">
+                    <div id="country">
+                        <p>Pays</p>
+                        <xsl:apply-templates mode="country">
+                            <xsl:sort select="@country"/>
+                        </xsl:apply-templates>
+                    </div>
+                </div>
+
+                <xsl:apply-templates select="country"/>
                 <xsl:apply-templates select="country[city]"/>
             </body>
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -25,6 +39,28 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         </html>
     </xsl:template>
 
+    <!--  Card  -->
+<!--    <xsl:template match="country">
+        <div style="background:red;">
+            <h3><xsl:value-of select="@name" /></h3>
+        toto
+        </div>
+
+        <br />
+    </xsl:template>-->
+
+    <xsl:template match="country" mode="country">
+        <li>
+            <p>
+                <a href="#{@name}">
+                    <xsl:value-of select="@name"/>
+                </a>
+            </p>
+        </li>
+    </xsl:template>
+
+
+<!--  Card  -->
     <xsl:template match="country">
         <div class="card" style="width: 25rem;">
             <div class="card-body">
@@ -44,8 +80,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                     </tr>
                 </table>
                 <br />
-                <xsl:apply-templates select="city"/>
-                <br />
                 <xsl:apply-templates select="city[position()&lt; 3]" style="background:red;"/>
             </div>
             <br />
@@ -58,11 +92,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         <br />
     </xsl:template>-->
 
-    <xsl:template match="city">
+<!--    <xsl:template match="city">
         <p><b>ville : <xsl:value-of select="name"/></b></p>
         <p>+ <xsl:value-of select="population" /> hab.</p>
         <p>+ <xsl:apply-templates/><xsl:value-of select="@percentage" />%</p>
-    </xsl:template>
+    </xsl:template>-->
 
 </xsl:stylesheet>
 
