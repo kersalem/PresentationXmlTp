@@ -11,13 +11,39 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                       crossorigin="anonymous"/>
             </head>
             <body>
-                <div>
-                    <a href="#country">Nom</a>
-                    <a href="#population">Population</a>
-                    <a href="#area">Superficie</a>
+                <div class="dropdown show">
+                    <a class="btn btn-secondary dropdown-toggle" href="#country" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Nom
+                    </a>
+                    <a class="btn btn-secondary dropdown-toggle" href="#population" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Popu
+                    </a>
+                    <a class="btn btn-secondary dropdown-toggle" href="#area" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Area
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#country">
+                                <xsl:apply-templates select="country" mode="nav">
+                                    <xsl:sort select="@country" order="descending"/>
+                                </xsl:apply-templates>
+                            </a>
+                        <a class="dropdown-item" href="#population">
+                            <xsl:apply-templates select="country" mode="pop" id="population">
+                                <xsl:sort select="@population" data-type="number"
+                                          order="descending"/>
+                            </xsl:apply-templates>
+                        </a>
+                        <a class="dropdown-item" href="#area">
+                            <xsl:apply-templates select="country" mode="area" id="area">
+                                <xsl:sort select="@area" data-type="number"
+                                          order="descending"/>
+                            </xsl:apply-templates>
+                        </a>
+                    </div>
                 </div>
 
-                <div id="navigation">
+<!--                <div id="navigation">
                     <div id="country">
                         <p>Pays</p>
                         <xsl:apply-templates mode="nav">
@@ -38,7 +64,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                                       order="descending"/>
                         </xsl:apply-templates>
                     </div>
-                </div>
+                </div>-->
 
                 <xsl:apply-templates select="country"/>
                 <xsl:apply-templates select="country[city]"/>
